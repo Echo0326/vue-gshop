@@ -135,6 +135,8 @@
         closeTip(){
           this.alertShow=false;
           this.alertText=''
+
+          
         }
       },
       components:{
