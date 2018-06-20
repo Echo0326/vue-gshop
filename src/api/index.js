@@ -19,7 +19,7 @@ export const reqPwdLogin=({name,pwd,captcha})=>ajax(`${BASE_URL}/login_pwd`,{nam
 // 7、发送短信验证码
 export const reqSendCode=(phone)=>ajax(`${BASE_URL}/sendcode`,{phone});
 // 8、手机号验证码登陆
-export const reqSmsLogin=(phone,code)=>ajax(`${BASE_URL}/login_sms`,{phone,code});
+export const reqSmsLogin=(phone,code)=>ajax(`${BASE_URL}/login_sms`,{phone,code},'POST');
 // 9、根据会话获取用户信息
 export const reqUserInfo=()=>ajax(`${BASE_URL}/userinfo`);
 // 10、用户登出
