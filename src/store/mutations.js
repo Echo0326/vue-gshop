@@ -6,8 +6,11 @@ import {
   RECEIVE_ADDRESS,
   RECEIVE_CATEGORYS,
   RECEIVE_SHOPS,
-  RECEIVE_USER_INFO
+  RECEIVE_USER_INFO,
+  RESET_USER_INFO
 } from './mutation-types';
+
+// import {Toast} from 'mint-ui';
 
 export default {
   [RECEIVE_ADDRESS](state,{address}){
@@ -21,5 +24,9 @@ export default {
   },
   [RECEIVE_USER_INFO](state,{userInfo}){
     state.userInfo=userInfo;
-  }
+  },
+  [RESET_USER_INFO](state){
+    // Toast('退出成功！');
+    state.userInfo={};
+},
 }

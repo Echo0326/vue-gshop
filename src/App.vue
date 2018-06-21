@@ -11,10 +11,13 @@
   import FooterGuide from './components/FooterGuide/FooterGuide';
     export default {
       mounted(){
+        //获取地址
        this.getAddress();
+       //请求用户信息
+       this.getUserInfo()
       },
       methods:{
-        ...mapActions(['getAddress'])
+        ...mapActions(['getAddress','getUserInfo'])
       },
       components:{
         FooterGuide
