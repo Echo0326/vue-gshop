@@ -12,4 +12,5 @@ export default {
   goods:[],//商品列表
   rating:[],//商家评价列表
   info:{},//商家信息
+  cartFoods:[],//购物车中初始的食品列表
 }

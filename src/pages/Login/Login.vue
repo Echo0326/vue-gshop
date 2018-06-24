@@ -12,13 +12,13 @@
         <form @submit.prevent="login">
           <div :class="{on:loginWay}">
             <section class="login_message">
-              <input type="text" maxlength="11" placeholder="手机号" v-model="phone">
+              <input type="tel" maxlength="11" placeholder="手机号" v-model="phone">
               <button @click.prevent="getCode" :disabled="!rightPhone" class="get_verification" :class="{right_phone:rightPhone}">
                 {{computeTime?`已发送(${computeTime})秒`:"获取验证码"}}
               </button>
             </section>
             <section class="login_verification">
-              <input v-model="code" type="text" maxlength="8" placeholder="验证码">
+              <input v-model="code" type="tel" maxlength="8" placeholder="验证码">
             </section>
             <section class="login_hint">
               温馨提示：未注册硅谷外卖帐号的手机号，登录时将自动注册，且代表已同意
