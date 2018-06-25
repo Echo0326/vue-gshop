@@ -13,7 +13,8 @@ import {
   RECEIVE_INFO,
   RECEIVE_RATINGS,
   DECREMENT_FOOD_COUNT,
-  INCREMENT_FOOD_COUNT
+  INCREMENT_FOOD_COUNT,
+  CLEAR_CART
 } from './mutation-types';
 
 // import {Toast} from 'mint-ui';
@@ -67,6 +68,13 @@ export default {
         state.cartFoods.splice(state.cartFoods.indexOf(food),1);
       }
     }
-
   },
+  [CLEAR_CART](state) {
+    //清除food中的count
+    state.cartFoods.forEach((food)=>{
+      food.count=0;
+    })
+    //移除购物车中的购物项
+     state.cartFoods = []
+  }
 }
