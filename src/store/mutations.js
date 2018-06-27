@@ -14,7 +14,9 @@ import {
   RECEIVE_RATINGS,
   DECREMENT_FOOD_COUNT,
   INCREMENT_FOOD_COUNT,
-  CLEAR_CART
+  CLEAR_CART,
+  RECEIVE_SEARCH_INFO,
+  CLEAR_SEARCH_INFO
 } from './mutation-types';
 
 // import {Toast} from 'mint-ui';
@@ -76,5 +78,11 @@ export default {
     })
     //移除购物车中的购物项
      state.cartFoods = []
+  },
+  [RECEIVE_SEARCH_INFO](state,{searchShops}){
+    state.searchShops=searchShops;
+  },
+  [CLEAR_SEARCH_INFO](state){
+    state.searchShops=[]
   }
 }

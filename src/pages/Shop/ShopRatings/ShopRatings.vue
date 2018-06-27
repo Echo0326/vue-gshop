@@ -98,7 +98,7 @@
           const {ratings,onlyShowText,selectType} =this;
           //产生一个新数组
           return  ratings.filter((rating)=>{
-                const {rateType,text}=rating;
+            const {rateType,text}=rating;
             /*
             *条件1
             * selectType：0/1/2

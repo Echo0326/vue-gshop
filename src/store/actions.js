@@ -13,7 +13,9 @@ import {
   RECEIVE_GOODS,
   DECREMENT_FOOD_COUNT,
   INCREMENT_FOOD_COUNT,
-  CLEAR_CART
+  CLEAR_CART,
+  RECEIVE_SEARCH_INFO,
+  CLEAR_SEARCH_INFO
 } from './mutation-types';
 
 import {
@@ -24,7 +26,8 @@ import {
   reqLogout,
   reqShopGoods,
   reqShopInfo,
-  reqShopRatings
+  reqShopRatings,
+  reqSearchShop
 } from '../api';
 
 export default {
@@ -92,9 +95,9 @@ export default {
 
   // 异步获取商家信息
   async getShopInfo({commit}) {
-    const result = await reqShopInfo()
+    const result = await reqShopInfo();
     if(result.code===0) {
-      const info = result.data
+      const info = result.data;
 
       commit(RECEIVE_INFO, {info})
 
@@ -102,10 +105,10 @@ export default {
   },
   // 异步获取商家评价列表
   async getShopRatings({commit},callback) {
-   const result = await reqShopRatings()
+   const result = await reqShopRatings();
     if(result.code===0) {
-      const ratings = result.data
-      commit(RECEIVE_RATINGS, {ratings})
+      const ratings = result.data;
+      commit(RECEIVE_RATINGS, {ratings});
       callback && callback()
     }
   },
@@ -113,8 +116,8 @@ export default {
   async getShopGoods({commit},callback) {
     const result = await reqShopGoods();
     if(result.code===0) {
-      const goods = result.data
-      commit(RECEIVE_GOODS, {goods})
+      const goods = result.data;
+      commit(RECEIVE_GOODS, {goods});
       // 如果组件中传递了接收消息的回调函数 , 数据更新后 , 调用回调通知调用的组件
       callback&&callback();
     }
@@ -128,10 +131,26 @@ export default {
      commit(DECREMENT_FOOD_COUNT,{food})
    }
   },
+
   //同步清空购物车
   clearCart({commit}){
    commit(CLEAR_CART)
-  }
+  },
 
+  //异步搜索商家列表
+  async searchShops({commit,state},keyword) {
+    const geohash=state.latitude+','+state.longitude;
+    const result = await reqSearchShop(geohash,keyword);
+    if(result.code===0) {
+      const searchShops = result.data;
+      commit(RECEIVE_SEARCH_INFO, {searchShops})
+      //
+    }
+  },
+
+  //同步清空搜索到的商家
+  clearSearchShops({commit}){
+   commit(CLEAR_SEARCH_INFO);
+  }
 
 }
